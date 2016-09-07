@@ -1,0 +1,37 @@
+<resources>
+    <!-- TimeLineView -->
+    <dimen name="timeline_inner_rim_width">2dp</dimen>
+    <dimen name="timeline_inner_radius">5dp</dimen>
+    <dimen name="timeline_out_rim_width">2dp</dimen>
+    <dimen name="timeline_border_width">2dp</dimen>
+
+    <!-- SuperRecyclerView -->
+    <dimen name="swipe_progress_bar_height">8dp</dimen>
+
+    <!-- RadarView -->
+    <dimen name="radar_view_width">300dp</dimen>
+    <dimen name="radar_view_height">300dp</dimen>
+
+    <!-- progress -->
+    <dimen name="width">10dp</dimen>
+    <dimen name="textSize">70dp</dimen>
+    <dimen name="metricSize">14dp</dimen>
+    <dimen name="metricPaddingY">25dp</dimen>
+    <dimen name="default_simple_progress_bar_height">5dp</dimen>
+
+    <!-- password -->
+    <dimen name="default_pwd_view_height">58dp</dimen>
+    <dimen name="default_pwd_view_text_size">30sp</dimen>
+    <dimen name="default_pwd_view_radius">6dp</dimen>
+
+    <!-- indicator -->
+    <dimen name="tab_text_size">12sp</dimen>
+    <dimen name="default_line_indicator_line_width">12dp</dimen>
+    <dimen name="default_line_indicator_gap_width">4dp</dimen>
+    <dimen name="default_line_indicator_stroke_width">1dp</dimen>
+    <dimen name="normal_text_size">18dp</dimen>
+
+    <!-- nice-spinner -->
+    <dimen name="three_grid_unit">24dp</dimen>
+    <dimen name="one_and_a_half_grid_unit">12dp</dimen>
+</resources>
