@@ -60,7 +60,8 @@ public class SwitchView extends View {
      * check enable status
      */
     private boolean isShield = true;
-    private int color = 0xff4bd763;
+    private int fillColor = 0xff4bd763;
+    private int strokeColor = 0xff43AC43;
 
     private int mWidth, mHeight;
     private float sWidth, sHeight;
@@ -204,8 +205,13 @@ public class SwitchView extends View {
         return result - bOffLeftX;
     }
 
-    public void onShield(int color){
-        this.color = color;
+    public void onShield(int fillColor) {
+        this.onShield(fillColor, 0xffD4E8D4);
+    }
+
+    public void onShield(int fillColor, int strokeColor) {
+        this.fillColor = fillColor;
+        this.strokeColor = strokeColor;
         isShield = false;
         invalidate();
     }
@@ -217,7 +223,7 @@ public class SwitchView extends View {
         final boolean isOn = (state == STATE_SWITCH_ON || state == STATE_SWITCH_ON2);
         // draw background
         paint.setStyle(Style.FILL);
-        paint.setColor(isOn ? color : 0xffe3e3e3);
+        paint.setColor(isOn ? fillColor : 0xffe3e3e3);
         canvas.drawPath(sPath, paint);
 
         sAnim = sAnim - 0.1f > 0 ? sAnim - 0.1f : 0;
@@ -254,7 +260,7 @@ public class SwitchView extends View {
         paint.setStyle(Style.STROKE);
         paint.setStrokeWidth(bStrokeWidth * 0.5f);
 
-        paint.setColor(isOn ? 0xff43AC43 : 0xffbfbfbf);
+        paint.setColor(isOn ? strokeColor : 0xffbfbfbf);
         canvas.drawPath(bPath, paint);
 
         canvas.restore();
@@ -265,7 +271,7 @@ public class SwitchView extends View {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        if (!isShield){
+        if (!isShield) {
             return true;
         }
         if ((state == STATE_SWITCH_ON || state == STATE_SWITCH_OFF) && (sAnim * bAnim == 0)) {
