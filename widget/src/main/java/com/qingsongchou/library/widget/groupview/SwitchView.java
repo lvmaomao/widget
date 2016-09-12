@@ -271,14 +271,14 @@ public class SwitchView extends View {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        if (!isShield) {
-            return true;
-        }
         if ((state == STATE_SWITCH_ON || state == STATE_SWITCH_OFF) && (sAnim * bAnim == 0)) {
             switch (event.getAction()) {
                 case MotionEvent.ACTION_DOWN:
                     return true;
                 case MotionEvent.ACTION_UP:
+                    if (!isShield) {
+                        return true;
+                    }
                     lastState = state;
                     if (state == STATE_SWITCH_OFF) {
                         refreshState(STATE_SWITCH_OFF2);
@@ -300,6 +300,12 @@ public class SwitchView extends View {
     }
 
     private void refreshState(int newState) {
+        if (isOpened && newState == STATE_SWITCH_ON){
+            return;
+        }
+        if (!isOpened && newState == STATE_SWITCH_OFF){
+            return;
+        }
         if (!isOpened && newState == STATE_SWITCH_ON) {
             isOpened = true;
         } else if (isOpened && newState == STATE_SWITCH_OFF) {
