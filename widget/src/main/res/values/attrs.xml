@@ -242,4 +242,8 @@
         <attr name="progress_back_color" format="color" />
 
     </declare-styleable>
+
+    <declare-styleable name="AngleProgressBar">
+        <attr name="angleHeight" format="dimension"/>
+    </declare-styleable>
 </resources>

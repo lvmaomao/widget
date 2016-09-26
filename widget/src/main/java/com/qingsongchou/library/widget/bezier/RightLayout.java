@@ -17,13 +17,17 @@ import com.qingsongchou.library.widget.R;
 
 public class RightLayout implements RefreshHeader {
 
-    private final Context context;
+    private Context context;
     private TextView textView;
     private PointerView mPointView;
 
     private int mHeight;
 
-    public RightLayout(Context context,int height) {
+    public RightLayout(Context context) {
+        this(context,0);
+    }
+
+    public RightLayout(Context context, int height) {
         this.context = context;
         mHeight = height;
     }
@@ -32,10 +36,12 @@ public class RightLayout implements RefreshHeader {
     @Override
     public View getView(ViewGroup container) {
         View view = LayoutInflater.from(context).inflate(R.layout.widget_load_more_layout, container, false);
-        ViewGroup.LayoutParams params = view.getLayoutParams();
-        params.width = (int) dp2px(92,view);
-        params.height = (int) dp2px(mHeight,view);
-        view.setLayoutParams(params);
+        if (mHeight != 0){
+            ViewGroup.LayoutParams params = view.getLayoutParams();
+            params.width = (int) dp2px(92,view);
+            params.height = (int) dp2px(mHeight,view);
+            view.setLayoutParams(params);
+        }
         textView = (TextView) view.findViewById(R.id.text);
         textView.bringToFront();
         mPointView = (PointerView) view.findViewById(R.id.pointView);
