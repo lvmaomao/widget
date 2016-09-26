@@ -300,12 +300,6 @@ public class SwitchView extends View {
     }
 
     private void refreshState(int newState) {
-        if (isOpened && newState == STATE_SWITCH_ON){
-            return;
-        }
-        if (!isOpened && newState == STATE_SWITCH_OFF){
-            return;
-        }
         if (!isOpened && newState == STATE_SWITCH_ON) {
             isOpened = true;
         } else if (isOpened && newState == STATE_SWITCH_OFF) {
