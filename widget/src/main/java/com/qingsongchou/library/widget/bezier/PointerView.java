@@ -38,7 +38,7 @@ public class PointerView extends View {
 
     private void init() {
         mPaint = new Paint();
-        mPaint.setColor(0xffC5F6F7);
+        mPaint.setColor(0xffF5F6F7);
         mPaint.setStyle(Paint.Style.FILL_AND_STROKE);
         mPaint.setStrokeWidth(0.1f);
         mPaint.setAntiAlias(true);

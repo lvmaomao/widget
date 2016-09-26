@@ -369,7 +369,15 @@ public class BezierLoadMoreLayout extends FrameLayout {
         if (rightRefreshHeader != null && translationX < 0) {
             rightRefreshHeader.onRelease(rightHead);
             if (refreshMode == MODE_UNDER_FOLLOW_DRAG || refreshMode == MODE_ABOVE) rightHead.animate().translationX(0).setDuration(150).start();
-            if (mLoadMoreCallback != null) mLoadMoreCallback.onRightRefreshing();
+            if (mLoadMoreCallback != null) {
+                mLoadMoreCallback.onRightRefreshing();
+                postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        onRefreshComplete();
+                    }
+                }, 300);
+            }
         }
 
         if (refreshMode == MODE_ABOVE) {

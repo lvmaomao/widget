@@ -10,9 +10,10 @@
         android:layout_height="match_parent"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:background="#C5F6F7"
+        android:padding="5dp"
+        android:background="#F5F6F7"
         android:gravity="center"
-        android:textSize="18sp"/>
+        android:textSize="13sp"/>
 
     <com.qingsongchou.library.widget.bezier.PointerView
         android:id="@+id/pointView"
