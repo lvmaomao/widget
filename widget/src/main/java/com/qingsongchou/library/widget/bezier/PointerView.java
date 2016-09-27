@@ -49,7 +49,6 @@ public class PointerView extends View {
         super.onSizeChanged(w, h, oldw, oldh);
         mWidth = w;
         mHeight = h;
-//        mRadius = px2dip(getContext(), mHeight * 0.15f);
         mRadius = dipToPx(getContext(), 33 / 2);
         mStartPointX = mCurrentPointX = mWidth / 2 - mRadius;
         mStartPointY = mCurrentPointY = 0;
@@ -68,18 +67,16 @@ public class PointerView extends View {
         canvas.translate(mWidth / 2, mHeight / 2);
         canvas.drawCircle(mStartPointX, mStartPointY, mRadius, mPaint);
         canvas.drawCircle(mCurrentPointX, mCurrentPointY, mRadius, mPaint);
-        Path path1 = new Path();
-        path1.moveTo(mCurrentPointX, mCurrentPointY - mRadius);
-        path1.quadTo((mCurrentPointX + mStartPointX) / 2, 0, mStartPointX, (mCurrentPointY - mRadius) / (mPercent * mPercent * mPercent * mPercent * mPercent));
-        path1.lineTo(mStartPointX, 0);
-        path1.lineTo(mCurrentPointX, 0);
-        canvas.drawPath(path1, mPaint);
-        Path path2 = new Path();
-        path2.moveTo(mCurrentPointX, mRadius - mCurrentPointY);
-        path2.quadTo((mCurrentPointX + mStartPointX) / 2, 0, mStartPointX, (mRadius - mCurrentPointY) / (mPercent * mPercent * mPercent * mPercent * mPercent));
-        path2.lineTo(mStartPointX, 0);
-        path2.lineTo(mCurrentPointX, 0);
-        canvas.drawPath(path2, mPaint);
+        Path path = new Path();
+        path.moveTo(mCurrentPointX, mCurrentPointY - mRadius);
+        path.quadTo((mCurrentPointX + mStartPointX) / 2, 0, mStartPointX, (mCurrentPointY - mRadius) / (mPercent * mPercent * mPercent * mPercent * mPercent));
+        path.lineTo(mStartPointX, 0);
+        path.lineTo(mCurrentPointX, 0);
+        path.moveTo(mCurrentPointX, mRadius - mCurrentPointY);
+        path.quadTo((mCurrentPointX + mStartPointX) / 2, 0, mStartPointX, (mRadius - mCurrentPointY) / (mPercent * mPercent * mPercent * mPercent * mPercent));
+        path.lineTo(mStartPointX, 0);
+        path.lineTo(mCurrentPointX, 0);
+        canvas.drawPath(path, mPaint);
         canvas.restore();
     }
 
@@ -91,14 +88,6 @@ public class PointerView extends View {
         mCurrentPointX = mStartPointX * (1 - percent) + percent * mEndPointX;
         postInvalidate();
     }
-
-//    public void end() {
-//        mCurrentPointX ++ ;
-//        if (mCurrentPointX == mStartPointX){
-//            return;
-//        }
-//        postInvalidateDelayed(100);
-//    }
 
     public static int px2dip(Context context, float pxValue) {
         final float scale = context.getResources().getDisplayMetrics().density;
