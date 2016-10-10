@@ -404,6 +404,8 @@ public class SwitchView extends View {
         super.onRestoreInstanceState(ss.getSuperState());
         this.isOpened = ss.isOpened;
         this.state = this.isOpened ? STATE_SWITCH_ON : STATE_SWITCH_OFF;
+
+        postInvalidate();
     }
 
     static final class SavedState extends BaseSavedState {
