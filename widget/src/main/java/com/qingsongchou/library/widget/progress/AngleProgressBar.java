@@ -44,6 +44,7 @@ public class AngleProgressBar extends View {
         mPaint.setAntiAlias(true);
         mPaint.setStyle(Paint.Style.FILL);
         mPaint.setStrokeWidth(angleHeight);
+        mPaint.setStrokeCap(Paint.Cap.ROUND);
     }
 
     @Override
@@ -61,18 +62,12 @@ public class AngleProgressBar extends View {
 
     private void AngleProgress(Canvas canvas) {
         canvas.save();
-
         canvas.translate(mWidth / 2, mHeight / 2);
         mPaint.setColor(0xffEAECEE);
         canvas.drawLine(-mWidth / 2 + angleHeight / 2, 0, mWidth / 2 - angleHeight / 2, 0, mPaint);
-        canvas.drawCircle(-mWidth / 2 + angleHeight / 2, 0, angleHeight / 2, mPaint);
-        canvas.drawCircle(mWidth / 2 - angleHeight / 2, 0, angleHeight / 2, mPaint);
-
         if (progress > 0 && progress <= 1) {
             mPaint.setColor(0xff43ac43);
             canvas.drawLine(-mWidth / 2 + angleHeight / 2, 0, mWidth * progress - mWidth / 2 - angleHeight / 2, 0, mPaint);
-            canvas.drawCircle(-mWidth / 2 + angleHeight / 2, 0, angleHeight / 2, mPaint);
-            canvas.drawCircle(mWidth * progress - mWidth / 2 - angleHeight / 2, 0, angleHeight / 2, mPaint);
         }
         canvas.restore();
     }
