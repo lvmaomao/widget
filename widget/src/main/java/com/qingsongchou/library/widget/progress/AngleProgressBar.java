@@ -76,6 +76,9 @@ public class AngleProgressBar extends View {
         if (progress >= 100) {
             progress = 100;
         }
+        if (progress == 1){
+            progress = 2;
+        }
         this.progress = progress / 100f;
         invalidate();
     }
