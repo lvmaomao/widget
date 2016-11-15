@@ -371,24 +371,30 @@ public class SwitchView extends View {
         this.status = status;
     }
 
-    private final OnStateChangedListener defaultListener = new OnStateChangedListener() {
+    private OnStateChangedListener onStateChangedListener;
+
+    private final OnStateChangedListener listener = new OnStateChangedListener() {
         @Override
         public void toggleToOn(View view) {
             toggleSwitch(STATE_SWITCH_ON);
             setStatus(true);
+
+            if (onStateChangedListener != null)
+                onStateChangedListener.toggleToOn(view);
         }
 
         @Override
         public void toggleToOff(View view) {
             toggleSwitch(STATE_SWITCH_OFF);
             setStatus(false);
+
+            if (onStateChangedListener != null)
+                onStateChangedListener.toggleToOff(view);
         }
     };
 
-    private OnStateChangedListener listener = defaultListener;
-
     public void setOnStateChangedListener(OnStateChangedListener listener) {
-        this.listener = listener == null ? defaultListener : listener;
+        onStateChangedListener = listener;
     }
 
     @Override
