@@ -371,7 +371,7 @@ public class SwitchView extends View {
         this.status = status;
     }
 
-    private OnStateChangedListener listener = new OnStateChangedListener() {
+    private final OnStateChangedListener defaultListener = new OnStateChangedListener() {
         @Override
         public void toggleToOn(View view) {
             toggleSwitch(STATE_SWITCH_ON);
@@ -385,9 +385,10 @@ public class SwitchView extends View {
         }
     };
 
+    private OnStateChangedListener listener = defaultListener;
+
     public void setOnStateChangedListener(OnStateChangedListener listener) {
-        if (listener == null) throw new IllegalArgumentException("empty listener");
-        this.listener = listener;
+        this.listener = listener == null ? defaultListener : listener;
     }
 
     @Override
