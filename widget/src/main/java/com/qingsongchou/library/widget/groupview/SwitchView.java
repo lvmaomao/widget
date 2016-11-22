@@ -60,6 +60,9 @@ public class SwitchView extends View {
      * check enable status
      */
     private boolean isShield = true;
+
+    private boolean isAutoChangeState = true;
+
     private int fillColor = 0xff4bd763;
     private int strokeColor = 0xff43AC43;
 
@@ -361,6 +364,14 @@ public class SwitchView extends View {
         void toggleToOff(View view);
     }
 
+    public boolean isAutoChangeState() {
+        return isAutoChangeState;
+    }
+
+    public void setAutoChangeState(boolean autoChangeState) {
+        isAutoChangeState = autoChangeState;
+    }
+
     private boolean status;
 
     public boolean isStatus() {
@@ -371,23 +382,34 @@ public class SwitchView extends View {
         this.status = status;
     }
 
-    private OnStateChangedListener listener = new OnStateChangedListener() {
+    private OnStateChangedListener onStateChangedListener;
+
+    private final OnStateChangedListener listener = new OnStateChangedListener() {
         @Override
         public void toggleToOn(View view) {
-            toggleSwitch(STATE_SWITCH_ON);
-            setStatus(true);
+            if (isAutoChangeState) {
+                toggleSwitch(STATE_SWITCH_ON);
+                setStatus(true);
+            }
+
+            if (onStateChangedListener != null)
+                onStateChangedListener.toggleToOn(view);
         }
 
         @Override
         public void toggleToOff(View view) {
-            toggleSwitch(STATE_SWITCH_OFF);
-            setStatus(false);
+            if (isAutoChangeState) {
+                toggleSwitch(STATE_SWITCH_OFF);
+                setStatus(false);
+            }
+
+            if (onStateChangedListener != null)
+                onStateChangedListener.toggleToOff(view);
         }
     };
 
     public void setOnStateChangedListener(OnStateChangedListener listener) {
-        if (listener == null) throw new IllegalArgumentException("empty listener");
-        this.listener = listener;
+        onStateChangedListener = listener;
     }
 
     @Override
