@@ -282,19 +282,32 @@ public class SwitchView extends View {
                     if (!isShield) {
                         return true;
                     }
-                    lastState = state;
-                    if (state == STATE_SWITCH_OFF) {
-                        refreshState(STATE_SWITCH_OFF2);
-                    } else if (state == STATE_SWITCH_ON) {
-                        refreshState(STATE_SWITCH_ON2);
-                    }
-                    bAnim = 1;
-                    invalidate();
 
-                    if (state == STATE_SWITCH_OFF2) {
-                        listener.toggleToOn(this);
-                    } else if (state == STATE_SWITCH_ON2) {
-                        listener.toggleToOff(this);
+                    if (isAutoChangeState) {
+                        lastState = state;
+                        if (state == STATE_SWITCH_OFF) {
+                            refreshState(STATE_SWITCH_OFF2);
+                        }
+                        else if (state == STATE_SWITCH_ON) {
+                            refreshState(STATE_SWITCH_ON2);
+                        }
+                        bAnim = 1;
+                        invalidate();
+
+                        if (state == STATE_SWITCH_OFF2) {
+                            listener.toggleToOn(this);
+                        }
+                        else if (state == STATE_SWITCH_ON2) {
+                            listener.toggleToOff(this);
+                        }
+                    }
+                    else if (onStateChangedListener != null) {
+                        if (state == STATE_SWITCH_OFF) {
+                            onStateChangedListener.toggleToOn(this);
+                        }
+                        else if (state == STATE_SWITCH_ON) {
+                            onStateChangedListener.toggleToOff(this);
+                        }
                     }
                     break;
             }
