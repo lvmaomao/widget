@@ -33,8 +33,10 @@ public class AngleProgressBar extends View {
     public AngleProgressBar(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.AngleProgressBar);
-        int dp = a.getDimensionPixelSize(R.styleable.AngleProgressBar_angleHeight, (int) dp2px(2));
-        angleHeight = dp2px(dp);
+        if (a == null){
+            return;
+        }
+        angleHeight = a.getDimensionPixelSize(R.styleable.AngleProgressBar_angleHeight, (int) dp2px(5));
         a.recycle();
         init();
     }
