@@ -400,10 +400,8 @@ public class SwitchView extends View {
     private final OnStateChangedListener listener = new OnStateChangedListener() {
         @Override
         public void toggleToOn(View view) {
-            if (isAutoChangeState) {
-                toggleSwitch(STATE_SWITCH_ON);
-                setStatus(true);
-            }
+            toggleSwitch(STATE_SWITCH_ON);
+            setStatus(true);
 
             if (onStateChangedListener != null)
                 onStateChangedListener.toggleToOn(view);
@@ -411,10 +409,8 @@ public class SwitchView extends View {
 
         @Override
         public void toggleToOff(View view) {
-            if (isAutoChangeState) {
-                toggleSwitch(STATE_SWITCH_OFF);
-                setStatus(false);
-            }
+            toggleSwitch(STATE_SWITCH_OFF);
+            setStatus(false);
 
             if (onStateChangedListener != null)
                 onStateChangedListener.toggleToOff(view);
