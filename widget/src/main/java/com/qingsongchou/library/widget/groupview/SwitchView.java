@@ -60,6 +60,9 @@ public class SwitchView extends View {
      * check enable status
      */
     private boolean isShield = true;
+
+    private boolean isAutoChangeState = true;
+
     private int fillColor = 0xff4bd763;
     private int strokeColor = 0xff43AC43;
 
@@ -279,19 +282,32 @@ public class SwitchView extends View {
                     if (!isShield) {
                         return true;
                     }
-                    lastState = state;
-                    if (state == STATE_SWITCH_OFF) {
-                        refreshState(STATE_SWITCH_OFF2);
-                    } else if (state == STATE_SWITCH_ON) {
-                        refreshState(STATE_SWITCH_ON2);
-                    }
-                    bAnim = 1;
-                    invalidate();
 
-                    if (state == STATE_SWITCH_OFF2) {
-                        listener.toggleToOn(this);
-                    } else if (state == STATE_SWITCH_ON2) {
-                        listener.toggleToOff(this);
+                    if (isAutoChangeState) {
+                        lastState = state;
+                        if (state == STATE_SWITCH_OFF) {
+                            refreshState(STATE_SWITCH_OFF2);
+                        }
+                        else if (state == STATE_SWITCH_ON) {
+                            refreshState(STATE_SWITCH_ON2);
+                        }
+                        bAnim = 1;
+                        invalidate();
+
+                        if (state == STATE_SWITCH_OFF2) {
+                            listener.toggleToOn(this);
+                        }
+                        else if (state == STATE_SWITCH_ON2) {
+                            listener.toggleToOff(this);
+                        }
+                    }
+                    else if (onStateChangedListener != null) {
+                        if (state == STATE_SWITCH_OFF) {
+                            onStateChangedListener.toggleToOn(this);
+                        }
+                        else if (state == STATE_SWITCH_ON) {
+                            onStateChangedListener.toggleToOff(this);
+                        }
                     }
                     break;
             }
@@ -359,6 +375,14 @@ public class SwitchView extends View {
         void toggleToOn(View view);
 
         void toggleToOff(View view);
+    }
+
+    public boolean isAutoChangeState() {
+        return isAutoChangeState;
+    }
+
+    public void setAutoChangeState(boolean autoChangeState) {
+        isAutoChangeState = autoChangeState;
     }
 
     private boolean status;
