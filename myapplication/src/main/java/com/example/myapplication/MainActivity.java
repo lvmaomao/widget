@@ -1,7 +1,9 @@
 package com.example.myapplication;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+
+import com.qingsongchou.library.widget.progress.AngleProgressBar;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -9,5 +11,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        AngleProgressBar bar1 = (AngleProgressBar) findViewById(R.id.bar1);
+        AngleProgressBar bar2 = (AngleProgressBar) findViewById(R.id.bar2);
+        AngleProgressBar bar3 = (AngleProgressBar) findViewById(R.id.bar3);
+        AngleProgressBar bar4 = (AngleProgressBar) findViewById(R.id.bar4);
+        AngleProgressBar bar5 = (AngleProgressBar) findViewById(R.id.bar5);
+        bar1.setProgress(0);
+        bar2.setProgress(10f);
+        bar3.setProgress(50.25);
+        bar4.setProgress(80.456);
+        bar5.setProgress(100);
     }
 }

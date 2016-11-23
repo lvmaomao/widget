@@ -4,7 +4,10 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 
@@ -33,7 +36,7 @@ public class AngleProgressBar extends View {
     public AngleProgressBar(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.AngleProgressBar);
-        if (a == null){
+        if (a == null) {
             return;
         }
         angleHeight = a.getDimensionPixelSize(R.styleable.AngleProgressBar_angleHeight, (int) dp2px(5));
@@ -78,11 +81,82 @@ public class AngleProgressBar extends View {
         if (progress >= 100) {
             progress = 100;
         }
-        if (progress == 1){
+        if (progress == 1) {
             progress = 2;
         }
         this.progress = progress / 100f;
         invalidate();
+    }
+
+    public void setProgress(float progress) {
+        if (progress >= 100) {
+            progress = 100;
+        }
+        if (progress == 1) {
+            progress = 2;
+        }
+        this.progress = progress / 100f;
+        invalidate();
+    }
+
+    public void setProgress(double progress) {
+        if (progress >= 100) {
+            progress = 100;
+        }
+        if (progress == 1) {
+            progress = 2;
+        }
+        this.progress = (float) (progress / 100f);
+        invalidate();
+    }
+
+    @Override
+    protected Parcelable onSaveInstanceState() {
+        Parcelable superState = super.onSaveInstanceState();
+        ProgressValue value = new ProgressValue(superState);
+        value.progress = progress;
+        return value;
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Parcelable state) {
+        super.onRestoreInstanceState(state);
+        if (state instanceof ProgressValue) {
+            ProgressValue value = (ProgressValue) state;
+            this.progress = value.progress;
+            invalidate();
+        }
+    }
+
+    public static class ProgressValue extends BaseSavedState {
+
+        private float progress;
+
+        private ProgressValue(Parcel source) {
+            super(source);
+            progress = source.readFloat();
+        }
+
+        public ProgressValue(Parcelable superState) {
+            super(superState);
+        }
+
+        @Override
+        public void writeToParcel(Parcel dest, int flags) {
+            dest.writeFloat(progress);
+        }
+
+        public static final Creator<ProgressValue> CREATOR = new Creator<ProgressValue>() {
+            @Override
+            public ProgressValue createFromParcel(Parcel in) {
+                return new ProgressValue(in);
+            }
+
+            @Override
+            public ProgressValue[] newArray(int size) {
+                return new ProgressValue[size];
+            }
+        };
     }
 
     /**

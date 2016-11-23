@@ -13,14 +13,38 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.myapplication.MainActivity">
 
-    <View
+    <com.qingsongchou.library.widget.progress.AngleProgressBar
+        android:id="@+id/bar1"
         android:layout_width="match_parent"
-        android:background="@color/colorAccent"
+        android:layout_marginBottom="10dp"
+        apps:angleHeight="15dp"
         android:layout_height="15dp"/>
 
     <com.qingsongchou.library.widget.progress.AngleProgressBar
+        android:id="@+id/bar2"
         android:layout_width="match_parent"
-        android:background="@color/colorAccent"
+        android:layout_marginBottom="10dp"
+        apps:angleHeight="15dp"
+        android:layout_height="15dp"/>
+
+    <com.qingsongchou.library.widget.progress.AngleProgressBar
+        android:id="@+id/bar3"
+        android:layout_width="match_parent"
+        android:layout_marginBottom="10dp"
+        apps:angleHeight="15dp"
+        android:layout_height="15dp"/>
+
+    <com.qingsongchou.library.widget.progress.AngleProgressBar
+        android:id="@+id/bar4"
+        android:layout_width="match_parent"
+        android:layout_marginBottom="10dp"
+        apps:angleHeight="15dp"
+        android:layout_height="15dp"/>
+
+    <com.qingsongchou.library.widget.progress.AngleProgressBar
+        android:id="@+id/bar5"
+        android:layout_width="match_parent"
+        android:layout_marginBottom="10dp"
         apps:angleHeight="15dp"
         android:layout_height="15dp"/>
 </LinearLayout>
