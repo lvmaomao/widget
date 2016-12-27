@@ -2,7 +2,9 @@ package com.example.myapplication;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 
+import com.qingsongchou.library.widget.dialog.CommonLoadingDialog;
 import com.qingsongchou.library.widget.progress.AngleProgressBar;
 
 public class MainActivity extends AppCompatActivity {
@@ -21,5 +23,14 @@ public class MainActivity extends AppCompatActivity {
         bar3.setProgress(50.25);
         bar4.setProgress(80.456);
         bar5.setProgress(100);
+
+        new CommonLoadingDialog(this).show();
+        View viewById = findViewById(R.id.textView);
+        viewById.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new CommonLoadingDialog(MainActivity.this).show("加载你妹");
+            }
+        });
     }
 }

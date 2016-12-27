@@ -3,15 +3,14 @@ package com.qingsongchou.library.widget.dialog;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.view.animation.Animation;
-import android.view.animation.LinearInterpolator;
-import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.qingsongchou.library.widget.R;
 
@@ -19,8 +18,10 @@ import com.qingsongchou.library.widget.R;
  * Created by 俊晓 on 2016/1/6.
  */
 public class CommonLoadingDialog extends Dialog {
-    private Animation animation;
-    private ImageView border;
+
+    private AnimationDrawable animation;
+    private ImageView loading;
+    private TextView loadingText;
     private Context mContext;
 
     public CommonLoadingDialog(Context context) {
@@ -45,17 +46,9 @@ public class CommonLoadingDialog extends Dialog {
     }
 
     private void initView(View view) {
-        border = (ImageView) view.findViewById(R.id.border);
-        initAnimation();
-    }
-
-    private void initAnimation() {
-        animation = new RotateAnimation(0, 359, Animation.RELATIVE_TO_SELF, 0.5f,
-                Animation.RELATIVE_TO_SELF, 0.5f);
-        animation.setDuration(1200);
-        animation.setRepeatCount(-1);
-        animation.getFillAfter();
-        animation.setInterpolator(new LinearInterpolator());
+        loading = (ImageView) view.findViewById(R.id.loading);
+        loadingText = (TextView) view.findViewById(R.id.loadingText);
+        animation = (AnimationDrawable) loading.getDrawable();
     }
 
     @Override
@@ -64,11 +57,8 @@ public class CommonLoadingDialog extends Dialog {
             Activity activity = (Activity) mContext;
             if (!activity.isFinishing()) {
                 super.show();
-                if (border != null) {
-                    if (border.getAnimation() != null) {
-                        border.clearAnimation();
-                    }
-                    border.setAnimation(animation);
+                if (loading != null && animation != null) {
+                    loading.clearAnimation();
                     animation.start();
                 }
             }
@@ -78,8 +68,18 @@ public class CommonLoadingDialog extends Dialog {
     @Override
     public void dismiss() {
         if (this.isShowing()) {
+            if (animation != null) {
+                animation.stop();
+            }
+            if (loading.getAnimation() != null) {
+                loading.clearAnimation();
+            }
             super.dismiss();
         }
     }
 
+    public void show(String text) {
+        this.show();
+        loadingText.setText(text);
+    }
 }

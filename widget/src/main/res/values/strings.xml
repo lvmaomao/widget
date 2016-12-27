@@ -1,2 +1,3 @@
 <resources>
+    <string name="app_loading">加载中</string>
 </resources>
