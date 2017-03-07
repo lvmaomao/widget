@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.View;
@@ -114,11 +115,13 @@ public class AvatarLayout extends ViewGroup {
             this.urls.add(url);
             ImageView imageView = getImageView();
             imageView.setImageResource(R.mipmap.ic_avatar_default);
-            Picasso.with(getContext())
-                    .load(url)
-                    .error(R.mipmap.ic_avatar_default)
-                    .placeholder(R.mipmap.ic_avatar_default)
-                    .into(imageView);
+            if (!TextUtils.isEmpty(url)) {
+                Picasso.with(getContext())
+                        .load(url)
+                        .error(R.mipmap.ic_avatar_default)
+                        .placeholder(R.mipmap.ic_avatar_default)
+                        .into(imageView);
+            }
             addView(imageView, childLayoutParams);
         }
         invalidate();
