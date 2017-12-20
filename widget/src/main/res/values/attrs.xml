@@ -188,29 +188,29 @@
     </declare-styleable>
 
     <declare-styleable name="PagerSlidingTabStrip">
-        <attr name="pstsIndicatorColor" format="color" />
-        <attr name="pstsIndicatorHeight" format="dimension" />
-        <attr name="pstsUnderlineColor" format="color" />
-        <attr name="pstsUnderlineHeight" format="dimension" />
-        <attr name="pstsDividerColor" format="color" />
-        <attr name="pstsDividerWidth" format="dimension" />
-        <attr name="pstsDividerPadding" format="dimension" />
-        <attr name="pstsScrollOffset" format="dimension" />
-        <attr name="pstsShouldExpand" format="boolean" />
-        <attr name="pstsPaddingMiddle" format="boolean" />
-        <attr name="pstsTabPaddingLeftRight" format="dimension" />
-        <attr name="pstsTabBackground" format="reference" />
-        <attr name="pstsTabNormalTextSize" format="dimension" />
-        <attr name="pstsTabSelectTextSize" format="dimension" />
-        <attr name="pstsTabTextColor" format="reference" />
-        <attr name="pstsTabTextStyle" format="reference">
+        <attr name="pstsQscIndicatorColor" format="color" />
+        <attr name="pstsQscIndicatorHeight" format="dimension" />
+        <attr name="pstsQscUnderlineColor" format="color" />
+        <attr name="pstsQscUnderlineHeight" format="dimension" />
+        <attr name="pstsQscDividerColor" format="color" />
+        <attr name="pstsQscDividerWidth" format="dimension" />
+        <attr name="pstsQscDividerPadding" format="dimension" />
+        <attr name="pstsQscScrollOffset" format="dimension" />
+        <attr name="pstsQscShouldExpand" format="boolean" />
+        <attr name="pstsQscPaddingMiddle" format="boolean" />
+        <attr name="pstsQscTabPaddingLeftRight" format="dimension" />
+        <attr name="pstsQscTabBackground" format="reference" />
+        <attr name="pstsQscTabNormalTextSize" format="dimension" />
+        <attr name="pstsQscTabSelectTextSize" format="dimension" />
+        <attr name="pstsQscTabTextColor" format="reference" />
+        <attr name="pstsQscTabTextStyle" format="reference">
             <flag name="normal" value="0x0" />
             <flag name="bold" value="0x1" />
             <flag name="italic" value="0x2" />
         </attr>
-        <attr name="pstsTabTextAllCaps" format="boolean" />
-        <attr name="pstsTabTextAlpha" format="integer" />
-        <attr name="pstsTabTextFontFamily" format="string" />
+        <attr name="pstsQscTabTextAllCaps" format="boolean" />
+        <attr name="pstsQscTabTextAlpha" format="integer" />
+        <attr name="pstsQscTabTextFontFamily" format="string" />
     </declare-styleable>
 
     <declare-styleable name="MarqueeLayout">
