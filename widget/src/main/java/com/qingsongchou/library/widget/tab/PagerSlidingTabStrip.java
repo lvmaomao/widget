@@ -172,26 +172,26 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 
         // get custom attrs for tabs and container
         a = context.obtainStyledAttributes(attrs, R.styleable.PagerSlidingTabStrip);
-        mIndicatorColor = a.getColor(R.styleable.PagerSlidingTabStrip_pstsIndicatorColor, mIndicatorColor);
-        mIndicatorHeight = a.getDimensionPixelSize(R.styleable.PagerSlidingTabStrip_pstsIndicatorHeight, mIndicatorHeight);
-        mUnderlineColor = a.getColor(R.styleable.PagerSlidingTabStrip_pstsUnderlineColor, mUnderlineColor);
-        mUnderlineHeight = a.getDimensionPixelSize(R.styleable.PagerSlidingTabStrip_pstsUnderlineHeight, mUnderlineHeight);
-        mDividerColor = a.getColor(R.styleable.PagerSlidingTabStrip_pstsDividerColor, mDividerColor);
-        mDividerWidth = a.getDimensionPixelSize(R.styleable.PagerSlidingTabStrip_pstsDividerWidth, mDividerWidth);
-        mDividerPadding = a.getDimensionPixelSize(R.styleable.PagerSlidingTabStrip_pstsDividerPadding, mDividerPadding);
-        isExpandTabs = a.getBoolean(R.styleable.PagerSlidingTabStrip_pstsShouldExpand, isExpandTabs);
-        mScrollOffset = a.getDimensionPixelSize(R.styleable.PagerSlidingTabStrip_pstsScrollOffset, mScrollOffset);
-        isPaddingMiddle = a.getBoolean(R.styleable.PagerSlidingTabStrip_pstsPaddingMiddle, isPaddingMiddle);
-        mTabPadding = a.getDimensionPixelSize(R.styleable.PagerSlidingTabStrip_pstsTabPaddingLeftRight, mTabPadding);
-        mTabBackgroundResId = a.getResourceId(R.styleable.PagerSlidingTabStrip_pstsTabBackground, mTabBackgroundResId);
-        mTabNormalTextSize = a.getDimensionPixelSize(R.styleable.PagerSlidingTabStrip_pstsTabNormalTextSize, mTabNormalTextSize);
-        mTabSelectTextSize = a.getDimensionPixelSize(R.styleable.PagerSlidingTabStrip_pstsTabSelectTextSize, mTabSelectTextSize);
+        mIndicatorColor = a.getColor(R.styleable.PagerSlidingTabStrip_pstsQscIndicatorColor, mIndicatorColor);
+        mIndicatorHeight = a.getDimensionPixelSize(R.styleable.PagerSlidingTabStrip_pstsQscIndicatorHeight, mIndicatorHeight);
+        mUnderlineColor = a.getColor(R.styleable.PagerSlidingTabStrip_pstsQscUnderlineColor, mUnderlineColor);
+        mUnderlineHeight = a.getDimensionPixelSize(R.styleable.PagerSlidingTabStrip_pstsQscUnderlineHeight, mUnderlineHeight);
+        mDividerColor = a.getColor(R.styleable.PagerSlidingTabStrip_pstsQscDividerColor, mDividerColor);
+        mDividerWidth = a.getDimensionPixelSize(R.styleable.PagerSlidingTabStrip_pstsQscDividerWidth, mDividerWidth);
+        mDividerPadding = a.getDimensionPixelSize(R.styleable.PagerSlidingTabStrip_pstsQscDividerPadding, mDividerPadding);
+        isExpandTabs = a.getBoolean(R.styleable.PagerSlidingTabStrip_pstsQscShouldExpand, isExpandTabs);
+        mScrollOffset = a.getDimensionPixelSize(R.styleable.PagerSlidingTabStrip_pstsQscScrollOffset, mScrollOffset);
+        isPaddingMiddle = a.getBoolean(R.styleable.PagerSlidingTabStrip_pstsQscPaddingMiddle, isPaddingMiddle);
+        mTabPadding = a.getDimensionPixelSize(R.styleable.PagerSlidingTabStrip_pstsQscTabPaddingLeftRight, mTabPadding);
+        mTabBackgroundResId = a.getResourceId(R.styleable.PagerSlidingTabStrip_pstsQscTabBackground, mTabBackgroundResId);
+        mTabNormalTextSize = a.getDimensionPixelSize(R.styleable.PagerSlidingTabStrip_pstsQscTabNormalTextSize, mTabNormalTextSize);
+        mTabSelectTextSize = a.getDimensionPixelSize(R.styleable.PagerSlidingTabStrip_pstsQscTabSelectTextSize, mTabSelectTextSize);
 
-        mTabTextColor = a.hasValue(R.styleable.PagerSlidingTabStrip_pstsTabTextColor) ? a.getColorStateList(R.styleable.PagerSlidingTabStrip_pstsTabTextColor) : null;
-        mTabTextTypefaceStyle = a.getInt(R.styleable.PagerSlidingTabStrip_pstsTabTextStyle, mTabTextTypefaceStyle);
-        isTabTextAllCaps = a.getBoolean(R.styleable.PagerSlidingTabStrip_pstsTabTextAllCaps, isTabTextAllCaps);
-        int tabTextAlpha = a.getInt(R.styleable.PagerSlidingTabStrip_pstsTabTextAlpha, DEF_VALUE_TAB_TEXT_ALPHA);
-        String fontFamily = a.getString(R.styleable.PagerSlidingTabStrip_pstsTabTextFontFamily);
+        mTabTextColor = a.hasValue(R.styleable.PagerSlidingTabStrip_pstsQscTabTextColor) ? a.getColorStateList(R.styleable.PagerSlidingTabStrip_pstsQscTabTextColor) : null;
+        mTabTextTypefaceStyle = a.getInt(R.styleable.PagerSlidingTabStrip_pstsQscTabTextStyle, mTabTextTypefaceStyle);
+        isTabTextAllCaps = a.getBoolean(R.styleable.PagerSlidingTabStrip_pstsQscTabTextAllCaps, isTabTextAllCaps);
+        int tabTextAlpha = a.getInt(R.styleable.PagerSlidingTabStrip_pstsQscTabTextAlpha, DEF_VALUE_TAB_TEXT_ALPHA);
+        String fontFamily = a.getString(R.styleable.PagerSlidingTabStrip_pstsQscTabTextFontFamily);
         a.recycle();
 
         //Tab text color selector
